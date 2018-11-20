@@ -8,7 +8,7 @@ import DCUtils
 public extension UIBezierPath {
     
     public convenience init(points: [Point]) {
-        self.init(points: points.transform { _,item in
+        self.init(points: points.transformed { _,item in
             return item.toCGPoint()
         })
     }
