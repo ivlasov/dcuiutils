@@ -14,8 +14,8 @@ public extension UIView {
     }
     
     @IBInspectable public var identifier: String? {
-        get { return RuntimeGetAssociatedObject(self, key: &UIViewPrivate.identifier) }
-        set { RuntimeSetAssociatedObject(self, value: newValue, key: &UIViewPrivate.identifier) }
+        get { return Runtime.object(self, key: &UIViewPrivate.identifier) }
+        set { Runtime.set(self, value: newValue, key: &UIViewPrivate.identifier) }
     }
     
     public func view<T:UIView>(identifier: String, type: T.Type? = nil) -> T? {

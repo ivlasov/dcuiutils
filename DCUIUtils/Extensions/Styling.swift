@@ -12,10 +12,10 @@ public extension NSObject {
     }
     
     @IBInspectable var styleName: String? {
-        get { return RuntimeGetAssociatedObject(self, key: &StyleKeys.styleName) }
+        get { return Runtime.object(self, key: &StyleKeys.styleName) }
         set {
             if let value = newValue {
-                RuntimeSetAssociatedObject(self, value: value, key: &StyleKeys.styleName)
+                Runtime.set(self, value: value, key: &StyleKeys.styleName)
             }
             applyStyle()
         }

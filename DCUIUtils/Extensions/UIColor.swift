@@ -13,7 +13,7 @@ public extension UIColor {
             cString = (cString as NSString).substring(from: 1)
         }
         
-        if cString.length != 6 {return nil}
+        if cString.count != 6 {return nil}
         
         let rString = (cString as NSString).substring(to: 2)
         let gString = ((cString as NSString).substring(from: 2) as NSString).substring(to: 2)

@@ -13,11 +13,11 @@ public extension UIViewController {
     
     @IBOutlet public var relations: ObjectUIRelations? {
         get {
-            return RuntimeGetAssociatedObject(self, key: &RelationsKeys.relations)
+            return Runtime.object(self, key: &RelationsKeys.relations)
         }
         set {
             if let value = newValue {
-                RuntimeSetAssociatedObject(self, value: value, key: &RelationsKeys.relations)
+                Runtime.set(self, value: value, key: &RelationsKeys.relations)
             }
         }
     }

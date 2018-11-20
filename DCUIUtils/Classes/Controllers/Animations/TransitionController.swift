@@ -22,7 +22,7 @@ public extension UIViewController {
     
     internal var transitioningController: TransitionController! {
         get {
-            if let value: TransitionController = RuntimeGetAssociatedObject(self, key: &TransitionAnimationKeys.transitioningController) {
+            if let value: TransitionController = Runtime.object(self, key: &TransitionAnimationKeys.transitioningController) {
                 return value
             }
             let ctrl = TransitionController()
@@ -32,7 +32,7 @@ public extension UIViewController {
         }
         set {
             if let value = newValue {
-                RuntimeSetAssociatedObject(self, value: value, key: &TransitionAnimationKeys.transitioningController)
+                Runtime.set(self, value: value, key: &TransitionAnimationKeys.transitioningController)
             }
         }
     }

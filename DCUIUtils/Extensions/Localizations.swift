@@ -41,15 +41,8 @@ public extension UINavigationItem {
     }
     
     @IBInspectable var localizedTitle: String? {
-        get {
-            return RuntimeGetAssociatedObject(self, key: &LocalizationKeys.localizedTitle)
-        }
-        set {
-            if let value = newValue {
-                RuntimeSetAssociatedObject(self, value: value, key: &LocalizationKeys.localizedTitle)
-            }
-            localize()
-        }
+        get { return Runtime.object(self, key: &LocalizationKeys.localizedTitle) }
+        set { Runtime.set(self, value: newValue, key: &LocalizationKeys.localizedTitle); localize() }
     }
     
     func localize() {
@@ -67,33 +60,22 @@ public extension UIViewController {
     }
     
     @IBInspectable var localizedTitle: String? {
-        get {
-            return RuntimeGetAssociatedObject(self, key: &LocalizationKeys.localizedTitle)
-        }
-        set {
-            if let value = newValue {
-                RuntimeSetAssociatedObject(self, value: value, key: &LocalizationKeys.localizedTitle)
-            }
-            localize()
-        }
+        get { return Runtime.object(self, key: &LocalizationKeys.localizedTitle) }
+        set { Runtime.set(self, value: newValue, key: &LocalizationKeys.localizedTitle); localize() }
     }
     
     @objc func localize() {
-        if isViewLoaded {
-            view.localize()
-        }
-        if let title = localizedTitle?.localized {
-            self.title = title
-        }
+        
+        if isViewLoaded { view.localize() }
+        if let title = localizedTitle?.localized { self.title = title }
+        
         let item = UITabBarItem(title: tabBarItem.title, image: tabBarItem.image, selectedImage: tabBarItem.selectedImage)
         item.tag = tabBarItem.tag
         item.localizedTitle = tabBarItem.localizedTitle
         item.localize()
         tabBarItem = item
         
-        children.forEach { ctrl in
-            ctrl.localize()
-        }
+        children.forEach { $0.localize() }
         navigationItem.leftBarButtonItem?.localize()
         if let items = navigationItem.leftBarButtonItems {
             for item in items {
@@ -126,11 +108,11 @@ public extension UIBarButtonItem {
     
     @IBInspectable var localizedTitle: String? {
         get {
-            return RuntimeGetAssociatedObject(self, key: &LocalizationKeys.localizedTitle)
+            return Runtime.object(self, key: &LocalizationKeys.localizedTitle)
         }
         set {
             if let value = newValue {
-                RuntimeSetAssociatedObject(self, value: value, key: &LocalizationKeys.localizedTitle)
+                Runtime.set(self, value: value, key: &LocalizationKeys.localizedTitle)
             }
             localize()
         }
@@ -160,11 +142,11 @@ public extension UILabel {
     
     @IBInspectable var localizedText: String? {
         get {
-            return RuntimeGetAssociatedObject(self, key: &LocalizationKeys.localizedText)
+            return Runtime.object(self, key: &LocalizationKeys.localizedText)
         }
         set {
             if let value = newValue {
-                RuntimeSetAssociatedObject(self, value: value, key: &LocalizationKeys.localizedText)
+                Runtime.set(self, value: value, key: &LocalizationKeys.localizedText)
             }
             localize()
         }
@@ -185,11 +167,11 @@ public extension UITextField {
     
     @IBInspectable var localizedText: String? {
         get {
-            return RuntimeGetAssociatedObject(self, key: &LocalizationKeys.localizedText)
+            return Runtime.object(self, key: &LocalizationKeys.localizedText)
         }
         set {
             if let value = newValue {
-                RuntimeSetAssociatedObject(self, value: value, key: &LocalizationKeys.localizedText)
+                Runtime.set(self, value: value, key: &LocalizationKeys.localizedText)
             }
             localize()
         }
@@ -197,11 +179,11 @@ public extension UITextField {
     
     @IBInspectable var localizedPlaceholder: String? {
         get {
-            return RuntimeGetAssociatedObject(self, key: &LocalizationKeys.localizedPlaceholder)
+            return Runtime.object(self, key: &LocalizationKeys.localizedPlaceholder)
         }
         set {
             if let value = newValue {
-                RuntimeSetAssociatedObject(self, value: value, key: &LocalizationKeys.localizedPlaceholder)
+                Runtime.set(self, value: value, key: &LocalizationKeys.localizedPlaceholder)
             }
             localize()
         }
@@ -226,11 +208,11 @@ public extension UITabBarItem {
     
     @IBInspectable var localizedTitle: String? {
         get {
-            return RuntimeGetAssociatedObject(self, key: &LocalizationKeys.localizedTitle)
+            return Runtime.object(self, key: &LocalizationKeys.localizedTitle)
         }
         set {
             if let value = newValue {
-                RuntimeSetAssociatedObject(self, value: value, key: &LocalizationKeys.localizedTitle)
+                Runtime.set(self, value: value, key: &LocalizationKeys.localizedTitle)
             }
             localize()
         }
@@ -252,11 +234,11 @@ public extension UIButton {
     
     @IBInspectable var localizedTitle: String? {
         get {
-            return RuntimeGetAssociatedObject(self, key: &LocalizationKeys.localizedTitle)
+            return Runtime.object(self, key: &LocalizationKeys.localizedTitle)
         }
         set {
             if let value = newValue {
-                RuntimeSetAssociatedObject(self, value: value, key: &LocalizationKeys.localizedTitle)
+                Runtime.set(self, value: value, key: &LocalizationKeys.localizedTitle)
             }
             localize()
         }
@@ -278,11 +260,11 @@ public extension UITextView {
     
     @IBInspectable var localizedText: String? {
         get {
-            return RuntimeGetAssociatedObject(self, key: &LocalizationKeys.localizedText)
+            return Runtime.object(self, key: &LocalizationKeys.localizedText)
         }
         set {
             if let value = newValue {
-                RuntimeSetAssociatedObject(self, value: value, key: &LocalizationKeys.localizedText)
+                Runtime.set(self, value: value, key: &LocalizationKeys.localizedText)
             }
             localize()
         }
@@ -302,11 +284,11 @@ public extension UISegmentedControl {
     
     @IBInspectable var localizedTitles: String? {
         get {
-            return RuntimeGetAssociatedObject(self, key: &LocalizationKeys.localizedTitles)
+            return Runtime.object(self, key: &LocalizationKeys.localizedTitles)
         }
         set {
             if let value = newValue {
-                RuntimeSetAssociatedObject(self, value: value, key: &LocalizationKeys.localizedTitles)
+                Runtime.set(self, value: value, key: &LocalizationKeys.localizedTitles)
             }
             localize()
         }
@@ -331,11 +313,11 @@ public extension UISearchBar {
     
     @IBInspectable var localizedText: String? {
         get {
-            return RuntimeGetAssociatedObject(self, key: &LocalizationKeys.localizedText)
+            return Runtime.object(self, key: &LocalizationKeys.localizedText)
         }
         set {
             if let value = newValue {
-                RuntimeSetAssociatedObject(self, value: value, key: &LocalizationKeys.localizedText)
+                Runtime.set(self, value: value, key: &LocalizationKeys.localizedText)
             }
             localize()
         }
@@ -343,11 +325,11 @@ public extension UISearchBar {
     
     @IBInspectable var localizedPlaceholder: String? {
         get {
-            return RuntimeGetAssociatedObject(self, key: &LocalizationKeys.localizedPlaceholder)
+            return Runtime.object(self, key: &LocalizationKeys.localizedPlaceholder)
         }
         set {
             if let value = newValue {
-                RuntimeSetAssociatedObject(self, value: value, key: &LocalizationKeys.localizedPlaceholder)
+                Runtime.set(self, value: value, key: &LocalizationKeys.localizedPlaceholder)
             }
             localize()
         }

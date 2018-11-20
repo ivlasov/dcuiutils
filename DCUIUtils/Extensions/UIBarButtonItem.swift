@@ -16,8 +16,8 @@ public extension UIBarButtonItem {
     }
     
     var buttonHandler: ((UIBarButtonItem) -> Void)? {
-        get { return RuntimeGetAssociatedObject(self, key: &Keys.buttonHandler) }
-        set { RuntimeSetAssociatedObject(self, value: newValue, key: &Keys.buttonHandler) }
+        get { return Runtime.object(self, key: &Keys.buttonHandler) }
+        set { Runtime.set(self, value: newValue, key: &Keys.buttonHandler) }
     }
     
     public convenience init(title: String, handler: ((UIBarButtonItem) -> Void)?) {

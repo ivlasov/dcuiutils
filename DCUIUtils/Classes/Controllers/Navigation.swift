@@ -13,12 +13,12 @@ public extension UINavigationController {
     
     @IBOutlet var navigation: Navigation? {
         get {
-            if let value: Navigation = RuntimeGetAssociatedObject(self, key: &NavigationKeys.navigation) {return value}
+            if let value: Navigation = Runtime.object(self, key: &NavigationKeys.navigation) {return value}
             return nil
         }
         set {
             newValue?.navigationController = self
-            RuntimeSetAssociatedObject(self, value: newValue, key: &NavigationKeys.navigation)
+            Runtime.set(self, value: newValue, key: &NavigationKeys.navigation)
         }
     }
     
@@ -124,11 +124,11 @@ public extension UIViewController {
     
     @IBOutlet var navigationProperties: NavigationProperties? {
         get {
-            if let value: NavigationProperties = RuntimeGetAssociatedObject(self, key: &NavigationKeys.navigationProperties) {return value}
+            if let value: NavigationProperties = Runtime.object(self, key: &NavigationKeys.navigationProperties) {return value}
             return nil
         }
         set {
-            RuntimeSetAssociatedObject(self, value: newValue, key: &NavigationKeys.navigationProperties)
+            Runtime.set(self, value: newValue, key: &NavigationKeys.navigationProperties)
         }
     }
     

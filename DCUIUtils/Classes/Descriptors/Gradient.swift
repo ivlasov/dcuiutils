@@ -52,13 +52,8 @@ open class Gradient {
             return
         }
         var colors = [CGColor]()
-//        var location = [CGFloat]()
-        if smooth {
-//            for color
-        } else {
-            colors = self.colors.makeArray { _,item in
-                return item.cgColor
-            }
+        for color in self.colors {
+            colors.append(color.cgColor)
         }
         let colorspace = CGColorSpaceCreateDeviceRGB()
         let gradient = CGGradient(colorsSpace: colorspace, colors: colors as CFArray, locations: locations)
